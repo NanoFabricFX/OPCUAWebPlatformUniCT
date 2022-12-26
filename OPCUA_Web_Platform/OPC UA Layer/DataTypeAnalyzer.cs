@@ -7,9 +7,9 @@ namespace WebPlatform.OPCUALayer
 {
     public class DataTypeAnalyzer
     {
-        private Session m_session;
+        private ISession m_session;
         
-        public DataTypeAnalyzer(Session session)
+        public DataTypeAnalyzer(ISession session)
         {
             this.m_session = session;
         }

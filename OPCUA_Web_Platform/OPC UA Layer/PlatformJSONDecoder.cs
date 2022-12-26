@@ -23,15 +23,15 @@ namespace WebPlatform.OPC_UA_Layer
         private JsonTextReader m_reader;
         private Dictionary<string, object> m_root;
         private Stack<object> m_stack;
-        private Session m_session;
+        private ISession m_session;
         private NodeId m_currentDataType;
         private JObject m_currentJObject;
-        private ServiceMessageContext m_context;
+        private IServiceMessageContext m_context;
         #endregion
 
         #region Constructors
         
-        private PlatformJsonDecoder(string json, NodeId dataTypeId, Session session, int[] dimensions): base (json, session.MessageContext)
+        private PlatformJsonDecoder(string json, NodeId dataTypeId, ISession session, int[] dimensions): base (json, session.MessageContext)
         {
             if (session == null)
                 throw new ArgumentNullException(nameof (session));
@@ -56,7 +56,7 @@ namespace WebPlatform.OPC_UA_Layer
 
         public int[] Dimensions { get; set; }
 
-        public static PlatformJsonDecoder CreateDecoder(string json, NodeId dataTypeId, Session session, int[] dimensions = null)
+        public static PlatformJsonDecoder CreateDecoder(string json, NodeId dataTypeId, ISession session, int[] dimensions = null)
         {
             return new PlatformJsonDecoder(json, dataTypeId, session, dimensions);
         }

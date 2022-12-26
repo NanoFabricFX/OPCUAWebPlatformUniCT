@@ -1,18 +1,12 @@
 using Newtonsoft.Json.Linq;
+using NJsonSchema;
 using Opc.Ua;
+using Opc.Ua.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Razor.Language;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
-using NJsonSchema;
-using Opc.Ua.Client;
 using WebPlatform.Exceptions;
-using WebPlatform.Models.DataSet;
 using WebPlatform.OPC_UA_Layer;
 
 namespace WebPlatform.Extensions
@@ -296,7 +290,7 @@ namespace WebPlatform.Extensions
 
     public static class SessionExtensionMethods
     {
-        public static (LocalizedText[] enumStrings, EnumValueType[] enumValues) GetEnumStrings(this Session session, NodeId dataTypeId)
+        public static (LocalizedText[] enumStrings, EnumValueType[] enumValues) GetEnumStrings(this ISession session, NodeId dataTypeId)
         {
             var referenceCollection = session.GetPropertiesReferenceCollection(dataTypeId);
 
@@ -321,7 +315,7 @@ namespace WebPlatform.Extensions
             return (null, null);
         }
 
-        public static ReferenceDescriptionCollection GetPropertiesReferenceCollection(this Session session, NodeId dataTypeId)
+        public static ReferenceDescriptionCollection GetPropertiesReferenceCollection(this ISession session, NodeId dataTypeId)
         {
             session.Browse(
                 null,
@@ -338,7 +332,7 @@ namespace WebPlatform.Extensions
             return refDescriptionCollection;
         }
 
-        public static DataValueCollection ReadNodeAttribute(this Session session, NodeId nodeId, uint attributeId)
+        public static DataValueCollection ReadNodeAttribute(this ISession session, NodeId nodeId, uint attributeId)
         {
             var nodeToRead = new ReadValueIdCollection();
 

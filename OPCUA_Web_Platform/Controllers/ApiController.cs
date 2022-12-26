@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-using WebPlatform.Extensions;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using NJsonSchema;
 using Opc.Ua;
-using Opc.Ua.Client;
-using WebPlatform.Models.DataSet;
-using WebPlatform.Models.OptionsModels;
-using WebPlatform.Models.OPCUA;
-using WebPlatform.OPCUALayer;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using WebPlatform.Exceptions;
+using WebPlatform.Models.DataSet;
+using WebPlatform.Models.OPCUA;
+using WebPlatform.Models.OptionsModels;
+using WebPlatform.OPCUALayer;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebPlatform.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("[controller]")]
     public class ApiController : Controller
     {

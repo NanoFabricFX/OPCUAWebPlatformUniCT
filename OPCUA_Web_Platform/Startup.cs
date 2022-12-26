@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 using Microsoft.IdentityModel.Tokens;
 using WebPlatform.Auth;
 using WebPlatform.Models.OptionsModels;
 using WebPlatform.OPCUALayer;
-using WebPlatform.MVCBugFix;
 
 namespace WebPlatform
 {
@@ -72,10 +65,14 @@ namespace WebPlatform
             // Check for invalid HTTP requests before the MVC
             //app.UseRequestValidator();
 
+           
+            app.UseRouting();
             app.UseAuthentication();
             app.UseRefreshToken();
-            
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+             });
 
         }
     }

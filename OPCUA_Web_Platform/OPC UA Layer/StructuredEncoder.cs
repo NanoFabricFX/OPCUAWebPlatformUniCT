@@ -37,7 +37,7 @@ namespace WebPlatform.OPC_UA_Layer
             }
         }
 
-        public ExtensionObject BuildExtensionObjectFromJsonObject(string descriptionId, JObject dataToEncode, ServiceMessageContext serviceMessageContext, NodeId dataTypeEncodingNodeId)
+        public ExtensionObject BuildExtensionObjectFromJsonObject(string descriptionId, JObject dataToEncode, IServiceMessageContext serviceMessageContext, NodeId dataTypeEncodingNodeId)
         {   
             _be = new BinaryEncoder(serviceMessageContext);
             EncodeJsonObject(descriptionId, dataToEncode);

@@ -451,7 +451,7 @@ namespace WebPlatform.OPCUALayer
                 }
 
                 _appConfiguration.ApplicationUri =
-                    Utils.GetApplicationUriFromCertificate(_appConfiguration.SecurityConfiguration.ApplicationCertificate
+                    X509Utils.GetApplicationUriFromCertificate(_appConfiguration.SecurityConfiguration.ApplicationCertificate
                         .Certificate);
                 if (_appConfiguration.SecurityConfiguration.AutoAcceptUntrustedCertificates)
                 {

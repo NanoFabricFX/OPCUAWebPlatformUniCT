@@ -45,7 +45,7 @@ namespace WebPlatform.OPCUALayer
         /// <param name="context"></param>
         /// <param name="generateSchema"></param>
         /// <returns></returns>
-        public UaValue Parse(string descriptionId, ExtensionObject extensionObject, ServiceMessageContext context, bool generateSchema)
+        public UaValue Parse(string descriptionId, ExtensionObject extensionObject, IServiceMessageContext context, bool generateSchema)
         {
             _bd = new BinaryDecoder((byte[])extensionObject.Body, context);
 
