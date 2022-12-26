@@ -69,6 +69,7 @@ namespace WebPlatform
             app.UseRouting();
             app.UseAuthentication();
             app.UseRefreshToken();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

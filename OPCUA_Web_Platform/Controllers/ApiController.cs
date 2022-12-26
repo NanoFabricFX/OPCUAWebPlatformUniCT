@@ -17,7 +17,7 @@ using WebPlatform.OPCUALayer;
 
 namespace WebPlatform.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("[controller]")]
     public class ApiController : Controller
     {
@@ -41,7 +41,8 @@ namespace WebPlatform.Controllers
         [HttpGet("data-sets/{ds_id:int}/nodes/{node_id:regex(^\\d+-(?:(\\d+)|(.+))$)?}")]
         public async Task<IActionResult> GetNode(int ds_id, string node_id = "0-85")
         {
-            if (ds_id < 0 || ds_id >= _uaServers.Length) return NotFound($"There is no Data Set for id {ds_id}");
+            if (ds_id < 0 || ds_id >= _uaServers.Length) 
+                return NotFound($"There is no Data Set for id {ds_id}");
             
             var serverUrl = _uaServers[ds_id].Url;
             if (!(await _uaClient.IsServerAvailable(serverUrl)))
@@ -267,7 +268,8 @@ namespace WebPlatform.Controllers
         [HttpPost("data-sets/{ds_id:int}/monitor")]
         public async Task<IActionResult> Monitor(int ds_id, [FromBody] MonitorParams monitorParams)
         {
-            if (ds_id < 0 || ds_id >= _uaServers.Length) return NotFound($"There is no Data Set for id {ds_id}");
+            if (ds_id < 0 || ds_id >= _uaServers.Length) 
+                return NotFound($"There is no Data Set for id {ds_id}");
 
             if (monitorParams == null || !monitorParams.IsValid())
             {
