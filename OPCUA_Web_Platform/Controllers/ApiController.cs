@@ -17,7 +17,7 @@ using WebPlatform.OPCUALayer;
 
 namespace WebPlatform.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("[controller]")]
     public class ApiController : Controller
     {
@@ -38,6 +38,13 @@ namespace WebPlatform.Controllers
             return Ok( _uaServers );
         }
 
+        /// <summary>
+        /// Read the a Node
+        /// </summary>
+        /// <param name="ds_id">Data Set Id</param>
+        /// <param name="node_id">NamespaceIndex-Identifier</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         [HttpGet("data-sets/{ds_id:int}/nodes/{node_id:regex(^\\d+-(?:(\\d+)|(.+))$)?}")]
         public async Task<IActionResult> GetNode(int ds_id, string node_id = "0-85")
         {
@@ -147,7 +154,7 @@ namespace WebPlatform.Controllers
             {
                 return StatusCode(500, "Data Set " + ds_id + " NotAvailable");
             }
-            
+            Console.WriteLine(result);
             return Ok(result);
         }
 

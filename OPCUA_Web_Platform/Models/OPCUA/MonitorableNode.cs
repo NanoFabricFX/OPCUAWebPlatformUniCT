@@ -43,6 +43,7 @@ namespace WebPlatform.Models.OPCUA
     public class StopMonitorParams
     {
         public string BrokerUrl { get; set; }
+
         public string Topic { get; set; }
         
         public bool IsValid()

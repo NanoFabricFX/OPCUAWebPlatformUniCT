@@ -44,7 +44,7 @@ namespace WebPlatform
             services.Configure<JwtOptions>(Configuration.GetSection("JwtOptions"));
             services.Configure<OPCUAServersOptions>(Configuration.GetSection("OPCUAServersOptions"));
 
-            services.AddMvc();
+            services.AddMvc().AddNewtonsoftJson();
 
             //Register server specific for the platform
             services.AddTransient<ITokenManager, JwtManager>();
@@ -67,9 +67,9 @@ namespace WebPlatform
 
            
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseRefreshToken();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseRefreshToken();
+            //app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
